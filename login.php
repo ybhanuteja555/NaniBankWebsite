@@ -7,7 +7,6 @@
 </head>
 <body>
 	<?php
-
 	if ($_SERVER['REQUEST_METHOD']=='POST') {
 		// code...
 		if ($_POST['action']=='login') {
@@ -25,7 +24,7 @@
 			$query = "select * from bank_users where user_name=? and password=?";
 			$stmt = $conn->prepare($query);
 			$stmt->bind_param("ss",$user_name,$password);
-			
+			$stmt->execute();
 			$result = $stmt->get_result();
 
 			if($result->num_rows > 0)
@@ -40,7 +39,7 @@
 		}
 		elseif ($_POST['action']=='Create_Account') {
 			// code...
-			header(location:create_account.html);
+			header("Location:create_account.html",true,301);
 			exit();
 		}
 	}
