@@ -7,6 +7,7 @@
 </head>
 <body>
 	<?php
+	session_start();
 	if ($_SERVER['REQUEST_METHOD']=='POST') {
 		// code...
 		if ($_POST['action']=='login') {
@@ -29,6 +30,7 @@
 
 			if($result->num_rows > 0)
 			{
+				$_SESSION['account_number'] = $session_account_number;
 				header(main_page.html);
 			}
 			else
