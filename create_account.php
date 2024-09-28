@@ -32,8 +32,8 @@
             echo " user Name already exists";
         }
         else{
-            $stmt =$conn->prepare("insert into bank_users (user_name,password) values (?,?)");
-            $stmt->bind_param("ss",$user_name,$password);
+            $stmt =$conn->prepare("insert into bank_users (user_name,password,available_balance) values (?,?,?)");
+            $stmt->bind_param("ssi",$user_name,$password,1500);
             if($stmt->execute())
             {
                 $stmt =$conn->prepare("select account_number from bank_users where user_name =? and password = ?");
