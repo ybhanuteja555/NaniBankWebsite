@@ -10,15 +10,15 @@
 	session_start();
 	if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
-		$conn = new mysqli("localhost","root","","nani_bank_website");
+		$conn = new mysqli("localhost","root","","nani_bank_website",3308);
 
 		if ($conn->connect_error) {
 			// code...
 			die("db is not connected".$conn->error);
 		}
-
+		$my_account_number = $_SESSION['account_number'];
 		$account_number = $_POST['account_number_frnd'];
-		$query1 ="select * from bank_add_accounts where account_number_frd = $account_number";
+		$query1 ="select * from nani_bank_add_accounts where account_number_frd = $account_number";
 		$result = $conn->query($query1);
 		if($result->num_rows > 0)
 		{
@@ -33,8 +33,8 @@
 			$nick_name =$_POST['nick_name'];
 			$ifsc_code =$_POST['ifsc_code'];
 			$bank_name =$_POST['bank_name'];
-			$my_account_number =6;
-			$stmt = $conn->prepare("insert into bank_add_accounts (account_number_frd,name,nick_name,bank_name,ifsc_code,my_account_number) values (?,?,?,?,?,?)");
+			echo $my_account_number;
+			$stmt = $conn->prepare("insert into nani_bank_add_accounts (account_number_frd,name,nick_name,bank_name,ifsc_code,my_account_number) values (?,?,?,?,?,?)");
 			$stmt->bind_param("issssi",$account_number,$name,$nick_name,$bank_name,$ifsc_code,$my_account_number);
 			if($stmt->execute())
 			{
@@ -42,6 +42,9 @@
 				echo " <button><a href = 'added_account_view.php'>View</button>
 				&nbsp&nbsp&nbsp
 				<button><a href = 'home.html'>Home</button>";
+			}
+			else{
+				echo"Account not added successfully";
 			}
 		}
 		

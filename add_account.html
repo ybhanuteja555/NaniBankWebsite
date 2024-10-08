@@ -4,10 +4,118 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Add Account</title>
+	<style type="text/css">
+	html, body {
+        margin: 0;
+        height: 100%;    
+        background-image: url(n_logo.png);
+	    }
+	    body{
+	    	display: flex;
+        	flex-direction: column;
+	    }
+	.nav {
+		background: #333;
+	    color: white;
+	    padding: 20px 0;
+	    margin-bottom: 20px;
+	  	list-style-type: none;
+	}
+
+	.nav li {
+	  display: inline-block;
+	  font-size: 20px;
+	  padding: 20px;
+	  color: white;
+	  height: 100%;
+	}
+	img
+	{
+		width: 30px;
+		height: 30px;
+	}
+	.nav li a{
+		color: white;
+	}
+	.left_content
+	{
+		float:left;
+		display: flex;
+		flex-direction :column;
+		width: 200px;
+		border: 10;
+	}
+	.left_content button
+	{
+		margin:10px 0;
+		padding: 10px;
+	}
+	.right_content
+	{
+		float:right;
+		display: flex;
+		flex-direction :column;
+		width: 200px;
+		border: 1;
+	}
+	.right_content button
+	{
+		margin:10px 0;
+		padding: 10px;
+	}
+	fieldset
+	{
+		display: flex;
+		height: 100%;
+		justify-content: center;
+	}
+	form
+	{	
+		height: 100%;
+	}
+	table{
+		background-color: white;
+	}
+	.content{
+		    	flex:1;
+	}
+    footer {
+
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding:10px 0;
+        width: 100%;
+    }
+	</style>
 </head>
 <body>
-	<h2>Welcome to Nani's Website</h2>
-
+	<div>
+		<ul class="nav">
+	  <li><img src="n_logo.png"> Nani Bank</li>
+	  <li><a href="home.php">Home</a></li>
+	  <li><a href="add_account.html">Add friends account </a></li>
+	  <li><a href="account_transaction_1.php">Money transfer</a></li>
+	  <li><a href="view_transactions.html">View statements</a></li>  
+	  <li><a href="logout.php">logout</a></li>
+	</ul>
+	<div class="block-container">
+		<div class="left_content">
+			<button><a href="account_transaction_1.php">Account transfer</a></button>
+			<button><a href="view_transactions.html">View Statements</a></button>
+			<button>Personal Loan</button>
+			<button><a href="added_account_view.php">View added accounts</a></button>
+			<button>Profile</button>
+			<button>Summary</button>
+		</div>
+		<div class="right_content">
+			<button>chat with bot</button>
+			<button>customer care</button>
+			<button>Locate Branch</button>
+			<button>Talk with Bot</button>
+		</div>
+	</div>
+	<fieldset>
 	<form action="add_account.php" method ="post">
 		<table>
 			<tr>
@@ -36,6 +144,9 @@
 			</tr>
 		</table>
 	</form>
-
+	</fieldset>
+	<footer class="content">
+        <p>&copy; 2024 My Bank. All rights reserved.</p>
+    </footer>
 </body>
 </html>
