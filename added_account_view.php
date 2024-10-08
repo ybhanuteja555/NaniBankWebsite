@@ -8,16 +8,16 @@
 <body>
 	<?php
 		session_start();
-		$conn = new mysqli("localhost","root","","nani_bank_website");
+		$conn = new mysqli("localhost","root","","nani_bank_website",3308);
 
 		if ($conn->connect_error) {
 		// code...
 			die("db is not connected".$conn);
 		}
 
-		$query1 ="Select * from bank_add_accounts where my_account_number=?";
+		$query1 ="Select * from nani_bank_add_accounts where my_account_number=?";
 		$stmt=$conn->prepare($query1);
-		$acc_num =6;
+		$acc_num =$_SESSION['account_number'];
 		$stmt->bind_param("i",$acc_num);
 		$stmt->execute();
 		$result = $stmt->get_result();
